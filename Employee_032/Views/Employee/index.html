@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Employee.Models.Employees>
+
+    @{
+    ViewData["Title"] = "Index - Employee";
+    }
+
+    <h2>Employee Register</h2>
+
+    <br />
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfficeLocation)
+                </th>
+                <th>
+                    <a asp-action="Create"><i class="glyphicon glyphicon-plus"></i> Employee</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficeLocation)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId"><i class="glyphicon glyphicon-pencil"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId" onclick="return confirm('Are you sure want to delete this record?')"><i class="glyphicon glyphicon-trash" style="color:red"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
